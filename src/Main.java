@@ -1,3 +1,4 @@
+import de.renoth.decorator.*;
 import de.renoth.observer.*;
 import de.renoth.strategy.BrabbleBehaviour;
 import de.renoth.strategy.Person;
@@ -8,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         strategyPattern();
         observerPattern();
+        decoratorPattern();
     }
 
     private static void strategyPattern() {
@@ -47,5 +49,19 @@ public class Main {
 
         stockMarket.deleteObserver(isOpenTicker);
         stockMarket.setVolume(1000);
+    }
+
+    private static void decoratorPattern() {
+        System.out.println("\n\nDecorator Pattern\n");
+
+        AbstractPizza pizza = new Pizza();
+        pizza = new Cheese(pizza);
+        pizza = new Salami(pizza);
+
+        AbstractPizza calzone = new Calzone();
+        calzone = new Salami(calzone);
+
+        System.out.println(pizza.getDescription() + " : " + pizza.cost());
+        System.out.println(calzone.getDescription() + " : " + calzone.cost());
     }
 }
