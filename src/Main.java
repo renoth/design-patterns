@@ -1,4 +1,8 @@
 import de.renoth.decorator.*;
+import de.renoth.factory.CarFactory;
+import de.renoth.factory.MotorcycleFactory;
+import de.renoth.factory.Vehicle;
+import de.renoth.factory.VehicleFactory;
 import de.renoth.observer.*;
 import de.renoth.strategy.BrabbleBehaviour;
 import de.renoth.strategy.Person;
@@ -10,6 +14,7 @@ public class Main {
         strategyPattern();
         observerPattern();
         decoratorPattern();
+        factoryPattern();
     }
 
     private static void strategyPattern() {
@@ -63,5 +68,17 @@ public class Main {
 
         System.out.println(pizza.getDescription() + " : " + pizza.cost());
         System.out.println(calzone.getDescription() + " : " + calzone.cost());
+    }
+
+    private static void factoryPattern() {
+        System.out.println("\n\nFactory Pattern Pattern\n");
+
+        VehicleFactory carFactory = new CarFactory();
+        Vehicle car = carFactory.create();
+        car.drive();
+
+        VehicleFactory motorcycleFactory = new MotorcycleFactory();
+        Vehicle motorcycle = motorcycleFactory.create();
+        motorcycle.drive();
     }
 }
