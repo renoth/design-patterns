@@ -1,3 +1,6 @@
+import de.renoth.command.CommandUser;
+import de.renoth.command.DoThatCommand;
+import de.renoth.command.DoThisCommand;
 import de.renoth.decorator.*;
 import de.renoth.factory.CarFactory;
 import de.renoth.factory.MotorcycleFactory;
@@ -17,6 +20,20 @@ public class Main {
         decoratorPattern();
         factoryPattern();
         singletonPattern();
+        commandPattern();
+    }
+
+    private static void commandPattern() {
+        System.out.println("\n\nCommand Pattern\n");
+        CommandUser commandUser = new CommandUser();
+
+        commandUser.receiveCommand(new DoThisCommand());
+        commandUser.receiveCommand(new DoThatCommand());
+
+        commandUser.executeCommands();
+        commandUser.executeCommands();
+        commandUser.receiveCommand(new DoThatCommand());
+        commandUser.executeCommands();
     }
 
     private static void singletonPattern() {
