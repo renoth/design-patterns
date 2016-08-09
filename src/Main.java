@@ -4,6 +4,7 @@ import de.renoth.factory.MotorcycleFactory;
 import de.renoth.factory.Vehicle;
 import de.renoth.factory.VehicleFactory;
 import de.renoth.observer.*;
+import de.renoth.singleton.CounterSingleton;
 import de.renoth.strategy.BrabbleBehaviour;
 import de.renoth.strategy.Person;
 import de.renoth.strategy.QuietBehaviour;
@@ -15,6 +16,20 @@ public class Main {
         observerPattern();
         decoratorPattern();
         factoryPattern();
+        singletonPattern();
+    }
+
+    private static void singletonPattern() {
+        System.out.println("\n\nSingleton Pattern\n");
+
+        CounterSingleton singleton = CounterSingleton.get();
+        System.out.println(singleton.getCounterValue());
+
+        CounterSingleton.get();
+
+        System.out.println(singleton.getCounterValue());
+        System.out.println(CounterSingleton.get().getCounterValue());
+        System.out.println(singleton.getCounterValue());
     }
 
     private static void strategyPattern() {
@@ -71,7 +86,7 @@ public class Main {
     }
 
     private static void factoryPattern() {
-        System.out.println("\n\nFactory Pattern Pattern\n");
+        System.out.println("\n\nFactory Pattern\n");
 
         VehicleFactory carFactory = new CarFactory();
         Vehicle car = carFactory.create();
