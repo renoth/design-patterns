@@ -1,3 +1,4 @@
+import de.renoth.adapter.Adapter;
 import de.renoth.command.CommandUser;
 import de.renoth.command.DoThatCommand;
 import de.renoth.command.DoThisCommand;
@@ -21,32 +22,7 @@ public class Main {
         factoryPattern();
         singletonPattern();
         commandPattern();
-    }
-
-    private static void commandPattern() {
-        System.out.println("\n\nCommand Pattern\n");
-        CommandUser commandUser = new CommandUser();
-
-        commandUser.receiveCommand(new DoThisCommand());
-        commandUser.receiveCommand(new DoThatCommand());
-
-        commandUser.executeCommands();
-        commandUser.executeCommands();
-        commandUser.receiveCommand(new DoThatCommand());
-        commandUser.executeCommands();
-    }
-
-    private static void singletonPattern() {
-        System.out.println("\n\nSingleton Pattern\n");
-
-        CounterSingleton singleton = CounterSingleton.get();
-        System.out.println(singleton.getCounterValue());
-
-        CounterSingleton.get();
-
-        System.out.println(singleton.getCounterValue());
-        System.out.println(CounterSingleton.get().getCounterValue());
-        System.out.println(singleton.getCounterValue());
+        adapterPattern();
     }
 
     private static void strategyPattern() {
@@ -112,5 +88,37 @@ public class Main {
         VehicleFactory motorcycleFactory = new MotorcycleFactory();
         Vehicle motorcycle = motorcycleFactory.create();
         motorcycle.drive();
+    }
+
+    private static void singletonPattern() {
+        System.out.println("\n\nSingleton Pattern\n");
+
+        CounterSingleton singleton = CounterSingleton.get();
+        System.out.println(singleton.getCounterValue());
+
+        CounterSingleton.get();
+
+        System.out.println(singleton.getCounterValue());
+        System.out.println(CounterSingleton.get().getCounterValue());
+        System.out.println(singleton.getCounterValue());
+    }
+
+    private static void commandPattern() {
+        System.out.println("\n\nCommand Pattern\n");
+        CommandUser commandUser = new CommandUser();
+
+        commandUser.receiveCommand(new DoThisCommand());
+        commandUser.receiveCommand(new DoThatCommand());
+
+        commandUser.executeCommands();
+        commandUser.executeCommands();
+        commandUser.receiveCommand(new DoThatCommand());
+        commandUser.executeCommands();
+    }
+
+    private static void adapterPattern() {
+        System.out.println("\nAdapter Pattern\n\n");
+        Adapter adapter = new Adapter();
+        adapter.targetMethod();
     }
 }
