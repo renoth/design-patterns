@@ -15,6 +15,8 @@ import de.renoth.singleton.CounterSingleton;
 import de.renoth.strategy.BrabbleBehaviour;
 import de.renoth.strategy.Person;
 import de.renoth.strategy.QuietBehaviour;
+import de.renoth.template.AllCapsPrinter;
+import de.renoth.template.AllLowercasePrinter;
 
 public class Main {
 
@@ -27,6 +29,7 @@ public class Main {
         commandPattern();
         adapterPattern();
         facadePattern();
+        templatePattern();
     }
 
     private static void strategyPattern() {
@@ -132,5 +135,14 @@ public class Main {
         Facade facade = new Facade(new ClassA(), new ClassB());
         facade.runMethodA();
         facade.runMethodB();
+    }
+
+    private static void templatePattern() {
+        System.out.println("\n\nTemplate Pattern\n");
+
+        String s = "This is a Test!";
+
+        new AllCapsPrinter().printFormattedString(s);
+        new AllLowercasePrinter().printFormattedString(s);
     }
 }
