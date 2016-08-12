@@ -3,6 +3,9 @@ import de.renoth.command.CommandUser;
 import de.renoth.command.DoThatCommand;
 import de.renoth.command.DoThisCommand;
 import de.renoth.decorator.*;
+import de.renoth.facade.ClassA;
+import de.renoth.facade.ClassB;
+import de.renoth.facade.Facade;
 import de.renoth.factory.CarFactory;
 import de.renoth.factory.MotorcycleFactory;
 import de.renoth.factory.Vehicle;
@@ -23,6 +26,7 @@ public class Main {
         singletonPattern();
         commandPattern();
         adapterPattern();
+        facadePattern();
     }
 
     private static void strategyPattern() {
@@ -120,5 +124,13 @@ public class Main {
         System.out.println("\nAdapter Pattern\n\n");
         Adapter adapter = new Adapter();
         adapter.targetMethod();
+    }
+
+    private static void facadePattern() {
+        System.out.println("\n\nFacade Pattern\n");
+
+        Facade facade = new Facade(new ClassA(), new ClassB());
+        facade.runMethodA();
+        facade.runMethodB();
     }
 }
